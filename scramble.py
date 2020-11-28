@@ -10,6 +10,9 @@ data = np.array(img)
 y_size = img.size[1]
 x_size = img.size[0]
 
+# Flatten the pixel matrix into an array.
+# Without this, only the pixel rows would
+# be shuffled
 i_flat = np.full((y_size * x_size), 0, dtype=int)
 for y in range(y_size):
     for x in range(x_size):
@@ -18,6 +21,7 @@ for y in range(y_size):
 random.seed(password)
 random.shuffle(i_flat)
 
+# Rebuild the pixel matrix.
 out = np.full((y_size, x_size, 3), (0, 0, 0), dtype=np.uint8)
 for y in range(y_size):
     for x in range(x_size):
